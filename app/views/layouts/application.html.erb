@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SampleApp</title>
+
+    <%# la variable :title es enviada por cada vista static_pages >> about/help/home %>
+    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +13,8 @@
   </head>
 
   <body>
+
+    <%# aqui se renderiza el contenido de cada vista  %>
     <%= yield %>
   </body>
 </html>
