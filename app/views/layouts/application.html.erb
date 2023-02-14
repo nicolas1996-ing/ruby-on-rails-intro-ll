@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-
-    <%# la variable :title es enviada por cada vista static_pages >> about/help/home %>
-    <title><%= full_title(yield(:title)) %></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  </head>
-
+    <%= render 'layouts/head' %>
   <body>
 
-    <%# aqui se renderiza el contenido de cada vista  %>
-    <%= yield %>
+    <%# partials: bloque de codigo html llamado como una funcion  %>
+    <%# partial 2. %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>  
+      <%# partial 3. %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
