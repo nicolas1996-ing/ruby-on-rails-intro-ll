@@ -3,7 +3,7 @@
   <head>
 
     <%# la variable :title es enviada por cada vista static_pages >> about/help/home %>
-    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
+    <title><%= full_title(yield(:title)) %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
