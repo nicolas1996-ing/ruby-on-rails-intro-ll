@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/new'
+
+  # configuracion de rutas 
 
   #  http://127.0.0.1:3000/static_pages/home
   #  http://127.0.0.1:3000/static_pages/help
@@ -16,10 +17,8 @@ Rails.application.routes.draw do
   # help_path
   # about_path
   # contact_path
-
-
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Define your 
+  application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # root "application#hello"
   # Defines the root path route ("/")
   # root "articles#index"
