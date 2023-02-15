@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # about_path
   # contact_path
   # Define your 
-  application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # root "application#hello"
   # Defines the root path route ("/")
   # root "articles#index"
