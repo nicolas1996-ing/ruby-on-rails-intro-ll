@@ -1,0 +1,24 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <%# 
+        como funciona el pluralize ? ...
+            >> helper.pluralize(1, "error")
+            => "1 error"
+            >> helper.pluralize(5, "error") 
+            => "5 errors"
+
+            >> helper.pluralize(2, "woman")
+            => "2 women"
+            >> helper.pluralize(3, "erratum")
+            => "3 errata"
+     %>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,3 +1,58 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user) do |f| %>
+     <%# equivalente html 
+      <form action="/users" class="new_user" id="new_user" method="post">
+    %>
+
+      <%# partial que renderiza los errores asociados al formulario (enlazado con las validaciones de los campos) %>
+      <%= render 'shared/error_messages' %>
+   
+
+      <%# input 1.  %>
+      <%= f.label :name %>
+      <%= f.text_field :name , class: 'form-control' %> 
+
+      <%# Equivalente html ...
+        <label for="user_name">Name</label>
+        <input id="user_name" name="user[name]" type="text" /> 
+      %>
+
+      <%# input 2.  %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+      <%# Equivalente html ... 
+        <label for="user_email">Email</label>
+        <input id="user_email" name="user[email]" type="email" />
+      %>
+
+      <%# input 3.  %>
+      <%= f.label :password %>
+      <%= f.password_field :password , class: 'form-control'%>
+      <%# Equivalente html ...
+        <label for="user_password">Password</label>
+        <input id="user_password" name="user[password]" type="password" />
+      
+       %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation , class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%# el metodo submit llama a users_controller.rb >> create  %>
+      <%# create llama a la vista create.html.erb %>
+
+      <%# respueste del formulario
+        "user" => { 
+            "name" => "name",
+            "email" => "email",
+            "password" => "[hash_password]",
+            "password_confirmation" => "[hash_password]"
+         }
+       %>
+    <% end %>
+  </div>
+</div>

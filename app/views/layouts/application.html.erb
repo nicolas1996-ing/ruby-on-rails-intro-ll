@@ -7,10 +7,20 @@
     <%# partial 2. %>
     <%= render 'layouts/header' %>
     <div class="container">
+     <%# asociado con el flash declarado en users_controller.rb ... create  %>
+     <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+
       <%# contenido de las views %>
       <%= yield %>  
       <%# partial 3. %>
       <%= render 'layouts/footer' %>
+
+      <%# solo se mostrara en ambiente de desarrollo %>
+      <%# <%= @user.name%> %>
+      <%# <%= Time.now%> %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>

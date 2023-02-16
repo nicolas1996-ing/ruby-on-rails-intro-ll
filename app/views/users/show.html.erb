@@ -1,0 +1,17 @@
+<%# accediendo a la variable global declarada en users_controller.rb %>
+
+
+<%# props enviadas al renderizador ppal layout>>application.html.erb %>
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for(@user,100) %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+

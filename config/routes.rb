@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get  "/contact", to: "static_pages#contact"
   get  "/signup",  to: "users#new"
 
+  # entidades de la bd 
+  resources :users
+
   # help_path
   # about_path
   # contact_path
