@@ -15,9 +15,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+
+      reset_session # test ???
+      log_in @user # funcion en helps/users_helper.rb
+
       # Handle a successful save.
       flash[:success] = "Welcome to the Sample App!"
-      
       # http://127.0.0.1:3000/users/:id
       redirect_to @user
     else

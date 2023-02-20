@@ -6,6 +6,9 @@
     <%# partials: bloque de codigo html llamado como una funcion  %>
     <%# partial 2. %>
     <%= render 'layouts/header' %>
+
+    <%# libreria js %>
+    <%= javascript_importmap_tags %>
     <div class="container">
      <%# asociado con el flash declarado en users_controller.rb ... create  %>
      <% flash.each do |message_type, message| %>

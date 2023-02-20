@@ -27,5 +27,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'users/show'
+    assert is_logged_in? # /Users/nicolasaristizabal/Desktop/somos/ruby_bootcamp/sample_app/test/test_helper.rb
   end
 end

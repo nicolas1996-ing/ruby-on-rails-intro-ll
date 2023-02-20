@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
 
   # configuracion de rutas 
 
@@ -13,6 +14,11 @@ Rails.application.routes.draw do
   get  "/about",   to: "static_pages#about" # pero en el navegador basta con llamar http://127.0.0.1:3000/help
   get  "/contact", to: "static_pages#contact"
   get  "/signup",  to: "users#new"
+
+  # rutas asociadas al loggin ... 
+  get    "/login",   to: "sessions#new"
+  post   "/login",   to: "sessions#create"
+  delete "/logout",  to: "sessions#destroy"
 
   # entidades de la bd 
   resources :users

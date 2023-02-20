@@ -1,0 +1,40 @@
+<% provide(:title, "Log in") %>
+<h1>Log in</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+   <%# scope: :session automaticamente identifica los campos que necesita el formulario %>
+    <%= form_with(url: login_path, scope: :session) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>
+
+<%# 
+    html correspondiente ... formulario metodo post 
+    .../login post = create 
+    .../login get  = new 
+    .../logout delete = destroy
+
+    <form action="/login" accept-charset="UTF-8" method="post">
+        <input type="hidden" name="authenticity_token"
+            value="4d0...FFw" autocomplete="off"/>
+        <label for="session_email">Email</label>
+        <input class="form-control" type="email" name="session[email]"
+            id="session_email"/>
+        <label for="session_password">Password</label>
+        <input class="form-control" type="password" name="session[password]"
+            id="session_password"/>
+        <input type="submit" name="commit" value="Log in" class="btn btn-primary"
+            data-disable-with="Log in"/>
+    </form>
+ %>
