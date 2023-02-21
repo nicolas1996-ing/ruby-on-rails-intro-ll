@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-
-      reset_session # test ???
+      reset_session # session metodo
       log_in @user # funcion en helps/users_helper.rb
 
       # Handle a successful save.
