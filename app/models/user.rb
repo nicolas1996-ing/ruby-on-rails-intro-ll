@@ -17,7 +17,7 @@ class User < ApplicationRecord
                     # uniqueness: { case_sensitive: false } # detecte entre mayusculas y minisculas
     has_secure_password
 
-    validates :password,presence: true, length: { minimum: 6 }
+    validates :password,presence: true, length: { minimum: 6 }, allow_nil: true
 
     # Returns the hash digest of the given string.
     def User.digest(string)
@@ -37,8 +37,15 @@ class User < ApplicationRecord
 
       self.remember_token = User.new_token # generar token 
       update_attribute(:remember_digest, User.digest(remember_token))
+      remember_digest 
     end
 
+      # Returns a session token to prevent session hijacking.
+    # We reuse the remember digest for convenience.
+    def session_token
+      remember_digest || remember
+    end
+  
      # Returns true if the given token matches the digest.
     def authenticated?(remember_token)
       return false if remember_digest.nil?
