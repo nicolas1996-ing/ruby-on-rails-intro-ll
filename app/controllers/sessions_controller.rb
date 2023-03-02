@@ -7,15 +7,28 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      forwarding_url = session[:forwarding_url]
-      # Log the user in and redirect to the user's show page.
-      reset_session # seguridad 
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user) # recordar o no la sesion 
-      remember user # function from session_helpe.rb
-      log_in user # seguridad 
-      redirect_to forwarding_url || user # SI HAY UNA URL ALMACENADA SINO A LA PAGINA ...users/:id
-      # redirect_to user # llama al controlador users y renderiza el metodo show .. views>>users>>show.html.erb
-      puts "valid user"
+      # forwarding_url = session[:forwarding_url]
+      # # Log the user in and redirect to the user's show page.
+      # reset_session # seguridad 
+      # params[:session][:remember_me] == '1' ? remember(user) : forget(user) # recordar o no la sesion 
+      # remember user # function from session_helpe.rb
+      # log_in user # seguridad 
+      # redirect_to forwarding_url || user # SI HAY UNA URL ALMACENADA SINO A LA PAGINA ...users/:id
+      # # redirect_to user # llama al controlador users y renderiza el metodo show .. views>>users>>show.html.erb
+      # puts "valid user"
+
+      if user.activated?
+        forwarding_url = session[:forwarding_url]
+        reset_session
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        log_in user
+        redirect_to forwarding_url || user
+      else
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
       # Create an error message.
       puts "invalid user"

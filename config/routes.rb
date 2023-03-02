@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   # entidades de la bd 
   resources :users
 
+  # controlador de reactivaciones, solo permite la accion :edit
+  resources :account_activations, only: [:edit]
+
   # help_path
   # about_path
   # contact_path

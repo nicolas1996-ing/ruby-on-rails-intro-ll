@@ -93,4 +93,20 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  # configurar envio de correos con sengrid .... cap 11.4
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'https://evening-inlet-42906.herokuapp.com' # host: $ grep heroku .git/config
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => 'apikey',
+    :password       => ENV['SENDGRID_API_KEY'], # variable configurada en heroku con este nombre 
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
 end
