@@ -98,7 +98,7 @@ Rails.application.configure do
   # configurar envio de correos con sengrid .... cap 11.4
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'https://evening-inlet-42906.herokuapp.com' # host: $ grep heroku .git/config
+  host = 'https://rocky-brushlands-98322.herokuapp.com' # host: $ grep heroku .git/config
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
